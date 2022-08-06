@@ -7,8 +7,7 @@ https://youtu.be/Vuwd725U5bU
 by approving the change the whole project will be rebuilt, this means the second repository will stop working unless manual connections are provided,
 therefore do not approve of the incoming change in the CI or the next part of the project will be disconnected:
 
-<img src="images/approve.png
-" alt="warning"> 
+<img src="images/approve.png" alt="warning"> 
 
 the project consists of many parts, we can divide those for sections:
 
