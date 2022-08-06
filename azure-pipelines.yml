@@ -12,5 +12,9 @@ stages:
   jobs:  
   - job: Init_TF
     steps:
+    - task: terraformInstaller@0
+      inputs:
+      terraformVersion: '0.12.12'
+      displayName: Install Terraform
     
 
