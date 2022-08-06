@@ -2,6 +2,7 @@
 **/.terraform/*
 planfile
 backend.tf
+.terraform.lock.hcl
 # .tfstate files
 *.tfstate
 *.tfstate.*

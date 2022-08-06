@@ -106,9 +106,6 @@ Now that we have the necessary service connections we can create a new pipline.
 
 <img src="https://user-images.githubusercontent.com/90269123/142788065-5a6f3f96-1162-4790-a779-63bb3530420e.png" width="400" height="400" alt="new pipeline">
 
-Click on `Use the classic editor` and choose the version control platform and the repository containing the azure-pipelines.yml .
-
-<img src="https://user-images.githubusercontent.com/90269123/142788303-68ddda6e-4a44-468b-9724-26dca5b5faf4.png" width="700" height="300" alt="platform">
 
 ### Before running the pipeline:
 
