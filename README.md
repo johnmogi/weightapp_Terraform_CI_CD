@@ -1,7 +1,10 @@
 # CI CD using azure Devops - building the Terraform infrastructure
 
 this repository is the starting point in Sela's week 12 bootcamp.
-in this repository we control the infrastructure as code for the actual assets on the azure 
+in this repository we control the infrastructure as code for the actual assets on the azure cloud.
+in addition we are using infracost to calculate any price change.
+
+
 
 ## Stage 1 - create the AKS in Azure cloud.
 you'll need to setup the following services:
@@ -100,11 +103,6 @@ Create an environment and connect it with AKS cluster that created with Terrafor
 
 
 
-Now that we have the necessary service connections we can create a new pipline.
->For this project I have imported the repository to Azure Repos.
-
-<img src="https://user-images.githubusercontent.com/90269123/142788065-5a6f3f96-1162-4790-a779-63bb3530420e.png" width="400" height="400" alt="new pipeline">
-
 
 ### Before running the pipeline:
 
@@ -132,11 +130,8 @@ Then run the following command in `/Kubernetes-CI-CD/k8s` :
 
 __Finally run the pipeline.__
 
-Result:
 
-Application running after adding some data.
-
-<img src="https://user-images.githubusercontent.com/90269123/142867015-95ef7fcd-9efb-48b9-91de-c651424ed16a.png" width="800" height="400" alt="result">
+<img src="" width="800" height="400" alt="result">
 
 
 # weightapp_Terraform_CI_CD
