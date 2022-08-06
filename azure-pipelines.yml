@@ -1,0 +1,16 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+- group: Terraform
+
+stages:  
+- stage: Init_TF  
+  jobs:  
+  - job: Init_TF
+    steps:
+    
+
