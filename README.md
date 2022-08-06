@@ -2,13 +2,13 @@
 
 this repository is the starting point in Sela's week 12 bootcamp.
 in this repository we control the infrastructure as code for the actual assets on the azure cloud.
-in addition we are using infracost to calculate any price change.
+if you have a clue on how to use the terraform in order to build the cloud you can skip the following section directly to WORKING instructions for the terraform CI CD..
 
-
+if not - follow the following:
 
 ## Stage 1 - create the AKS in Azure cloud.
 you'll need to setup the following services:
-1. a Terraform Bacend - manually create a new storage account and populate the backend.tf file (not included)"
+1. a Terraform Backend - manually create a new storage account and populate the backend.tf file (not included)"
 redundency - LRS } performance standard
 regarding backend - read more here on hiw to manage it securely:
 https://www.terraform.io/language/settings/backends/configuration
@@ -79,7 +79,28 @@ Follow these steps before creating the pipeline:
 1. Run the following command to get access credentials for a managed Kubernetes cluster.
 
 
-## Azure DevOps + AKS kubectl connection
+## WORKING instructions for the terraform CI CD
+in addition we are using infracost to calculate any price change.
+
+by commiting and approving the process in azure devops the build stage will begin.
+also - please supply your backend details at the library variable group - Terraform
+
+to manually view price of current plan
+## install infracost:
+
+- then run - infracost breakdown --path .
+
+<img src="images/breakdown.png" width="800" height="400" alt="result">
+
+- infracost breakdown --path . --format json --out-file infracost-base.json
++ suggest changes in the infrastructure (add resources etc.)
+
+- infracost diff --path . --compare-to infracost-base.json
+
+you will see the price change.
+
+
+## SETUP phase for the 2nd CI CD : Azure DevOps + AKS kubectl connection
 
         az login
         az account show
@@ -104,34 +125,11 @@ Create an environment and connect it with AKS cluster that created with Terrafor
 
 
 
-### Before running the pipeline:
 
-Create a new YAML in `/Kubernetes-CI-CD/k8s` called `secret.yml` and fill in the secret variables.
-> __Note: The variables have to be base64 encoded strings.__
-
-        apiVersion: v1
-        kind: Secret
-        metadata:
-          name: app-secrets
-          labels:
-            app: ksrebuild
-        data:
-          pghost: 
-          pgusername: 
-          pgpassword: 
-          cookie_encrypt: 
-          oktaclient: 
-          oktasecret: 
-          
-Then run the following command in `/Kubernetes-CI-CD/k8s` :
-
-        kubectl apply -f ./secret.yml
-
-
-__Finally run the pipeline.__
-
-
-<img src="" width="800" height="400" alt="result">
+<!-- <img src="" width="800" height="400" alt="result"> -->
 
 
 # weightapp_Terraform_CI_CD
+
+@ if using your own azure devops- the terraform extenstion:
+https://marketplace.visualstudio.com/items?itemName=ms-devlabs.custom-terraform-tasks

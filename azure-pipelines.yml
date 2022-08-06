@@ -45,6 +45,12 @@ stages:
         workingDirectory: '$(terraform_folder_path)'
         commandOptions: '-out=plan -var-file="build.tfvars"'
 
+    - task: InfracostSetup@1
+      inputs:
+        apiKey: 'ico-tnjTSq0xperi06wWmeSDDE68UDnfUuET'
+        version: '0.10.x'
+        pricingApiEndpoint: 'https://cloud-pricing-api/'
+
 - stage: build_cloud       
   jobs: 
   - job: publish_artifact

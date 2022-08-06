@@ -3,21 +3,6 @@ variable "location" {
   type    = string
   default = "eastus"
 }
-variable "pg_user" {
-  type        = string
-  description = "Postgresql database user name"
-  default     = "postgres"
-}
-variable "pg_database" {
-  type        = string
-  description = "Postgresql database name"
-  default     = "postgres"
-}
-
-variable "pg_password" {
-  type        = string
-  description = "Database password"
-}
 
 variable "cluster_name" {
   type        = string
