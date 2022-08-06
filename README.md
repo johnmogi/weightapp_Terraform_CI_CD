@@ -1,8 +1,7 @@
-# kubernetes - K8s CI CD using Azure Devops
+# CI CD using azure Devops - building the Terraform infrastructure
 
-__Creating the needed it with terraform.__
-
-
+this repository is the starting point in Sela's week 12 bootcamp.
+in this repository we control the infrastructure as code for the actual assets on the azure 
 
 ## Stage 1 - create the AKS in Azure cloud.
 you'll need to setup the following services:
