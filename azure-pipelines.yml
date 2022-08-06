@@ -30,7 +30,7 @@ stages:
         backendAzureRmKey: '$(key)'
 
 # start plan
-- stage: Load connection  
+- stage: Load_Connection  
   jobs:  
   - job: plan_staging_workspace
     # check for variables needed for it
