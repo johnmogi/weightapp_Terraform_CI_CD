@@ -5,6 +5,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
+
 - group: Terraform
 
 stages:  
@@ -12,9 +13,60 @@ stages:
   jobs:  
   - job: Init_TF
     steps:
-    - task: terraformInstaller@0
-      inputs:
-      terraformVersion: '0.12.12'
-      displayName: Install Terraform
     
+    - task: TerraformInstaller@0
+      displayName: 'Install TF'
+      inputs:
+        terraformVersion: '3.0.0'
+    - task: TerraformTaskV3@3
+      displayName: 'terraform init'
+      inputs:
+        provider: 'azurerm'
+        command: 'init'
+        backendServiceArm: 'Azure Pass - Sponsorship(3267b621-b224-44c6-a7f4-ed1691799109)'
+        backendAzureRmResourceGroupName: '$(backend_resource_group)'
+        backendAzureRmStorageAccountName: '$(backend_account_name)'
+        backendAzureRmContainerName: '$(backend_container)'
+        backendAzureRmKey: '$(key)'
+
+# start plan
+- stage: Load connection  
+  jobs:  
+  - job: plan_staging_workspace
+    # check for variables needed for it
+    # variables:   
+    # - group: Terraform
+    steps:
+    - task: TerraformTaskV3@3
+      inputs:
+        provider: 'azurerm'
+        command: 'plan'
+        environmentServiceNameAzureRM: 'Azure Pass - Sponsorship(1)(3267b621-b224-44c6-a7f4-ed1691799109)'
+        workingDirectory: '$(terraform_folder_path)'
+        commandOptions: '-out=plan -var-file="build.tfvars"'
+
+- stage: build_cloud       
+  jobs: 
+  - job: publish_artifact
+    steps:      
+   # Archive build   
+    - task: ArchiveFiles@2
+      inputs:
+        # rootFolderOrFile: '$(Build.BinariesDirectory)'
+        rootFolderOrFile: '$(Build.Sourcesdirectory)'
+        includeRootFolder: false
+        archiveType: 'zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/terraform.zip'
+        replaceExistingArchive: true
+
+   # publish package
+    - task: UniversalPackages@0
+      inputs:
+        command: 'publish'
+        publishDirectory: '$(Build.ArtifactStagingDirectory)'
+        feedsToUsePublish: 'internal'
+        vstsFeedPublish: '618ff623-8390-4805-ac49-c45c783aa2f2'
+        vstsFeedPackagePublish: 'tf_build'
+        versionOption: 'patch'
+
 
