@@ -53,8 +53,6 @@ access_key = "hlongstringaccessname"
 provider "azurerm" {
   features {}
   subscription_id = ""
-  # client_id       = ""
-  # client_secret   = ""
   tenant_id       = ""
 }
 , can be found here (use CLI az login - it would hand you out the info)
@@ -98,6 +96,9 @@ Follow these steps before creating the pipeline:
 1. Follow this [link](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli) to login to Azure CLI.<br/>
 1. Run the following command to get access credentials for a managed Kubernetes cluster.
 
+
+Good luck and don't forget to have fun!<br/>
+any questions regarding this project you can direct to me: dev AT johnmogi.com
 
 ## WORKING instructions for the terraform CI CD
 in addition we are using infracost to calculate any price change.<br/>
