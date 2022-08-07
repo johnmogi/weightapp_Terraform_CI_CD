@@ -5,6 +5,7 @@ resource "azurerm_resource_group" "k8s" {
   location = var.location
 }
 
+
 # Create container registry
 
 resource "azurerm_container_registry" "acr" {
@@ -33,6 +34,8 @@ resource "azurerm_kubernetes_cluster" "k8s" {
     node_count = var.agent_count
     # node_count = 1
     vm_size    = "Standard_B2s"
+    # vm_size    = "Standard_B2ms"
+
   }
 
   network_profile {

@@ -1,4 +1,4 @@
-variable TF_VAR_enviroment{default="staging" }
+variable TF_VAR_enviroment{default="production" }
 variable "location" {
   type    = string
   default = "eastus"
